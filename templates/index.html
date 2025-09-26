@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Review Platform</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 1200px; margin: auto; }
+        h1 { color: #333; }
+        .movie-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .movie-card { background-color: white; border: 1px solid #ccc; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .movie-card h3 { margin-top: 0; color: #007bff; }
+        .score { font-size: 1.5em; font-weight: bold; color: green; margin: 10px 0; }
+        .review-button { background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ภาพยนตร์ในโรง (ใช้ NLP ในการให้คะแนน)</h1>
+        <div class="movie-grid">
+            {% for movie in movies %}
+            <div class="movie-card">
+                <h3>{{ movie.title }}</h3>
+                <div class="score" style="color: 
+                    {% if movie.score >= 70 %}
+                        green; /* สีเขียว */
+                    {% elif movie.score >= 40 %}
+                        orange; /* สีส้ม */
+                    {% else %}
+                        red; /* สีแดง */
+                    {% endif %}
+                ;">
+
+                    {{ movie.score }}%
+                </div>
+                <a href="{{ url_for('movie_page', movie_id=movie.id) }}" class="review-button">รีวิวและดูรายละเอียด</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

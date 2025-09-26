@@ -1,0 +1,16 @@
+# Python artifacts
+*.pyc
+__pycache__/
+
+# Environment and Data
+.venv/
+/models/*.pkl
+/models/*.joblib
+/models/*.h5
+
+# IDE specific files
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
